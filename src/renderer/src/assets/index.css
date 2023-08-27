@@ -1,0 +1,162 @@
+/* :root {
+
+} */
+/* @font-face {
+  font-family: 'Monaco';
+  src: url('./font/Monaco.woff');
+} */
+body {
+  display: flex;
+  flex-direction: column;
+  /* font-family: 'Monaco', Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', sans-serif; */
+  font-family: Segoe UI, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #d3dfe3;
+  background-color: #2f3241;
+  font-size: 14px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.15fr 3fr 0.1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'topbar'
+    'main'
+    'info';
+  height: 100%;
+  width: 100%;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: 'sidebar editor';
+  grid-area: main;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  /* border-right: 0.1px solid #86a5b1; */
+  resize: horizontal;
+  min-width: 100%;
+  max-width: 50vw;
+}
+
+.editor {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 1.9fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'filebar'
+    'editormain';
+  grid-area: editor;
+  height: 100%;
+}
+
+.editormain {
+  grid-area: editormain;
+  resize: horizontal;
+  /* width: 100%; */
+  min-width: 50vw;
+  max-width: 100%;
+}
+
+.filebar {
+  grid-area: filebar;
+  border-bottom: 0.1px solid #86a5b1;
+}
+
+.topbar {
+  grid-area: topbar;
+  border-bottom: 0.1px solid #86a5b1;
+}
+
+.info {
+  grid-area: info;
+  background-color: #242732;
+}
+
+.topbardiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.topbardiv > div {
+  font-size: 1.1em;
+  /* border-inline: 1px solid #86a5b1; */
+  padding: 0.3em 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.topbardiv > div:hover {
+  background-color: #86a5b148;
+}
+.down {
+  position: relative;
+}
+.topbardiv > .down::after {
+  content: '';
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 0.2rem solid #86a5b1;
+  z-index: 10;
+}
+.sidebardiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.sidebardiv .filename {
+  cursor: pointer;
+  padding: 0.2rem 0.2rem;
+}
+.sidebardiv .filename:hover {
+  background-color: #86a5b148;
+}
+.toolbar {
+  padding: 0.2rem 0.1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 0.001rem solid #86a5b1;
+}
+.toolbar > button {
+  background-color: transparent;
+  border: none;
+  color: #86a5b1;
+  padding: 0.29rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.09em;
+  border-radius: 2px;
+}
+
+.toolbar > button:hover {
+  background-color: #86a5b148;
+}
