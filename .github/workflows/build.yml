@@ -1,6 +1,9 @@
 name: Build/release
 
-on: push
+on:
+  push:
+    branches: ['main']
+    tags: ['*']
 
 jobs:
   typecheck-lint:
@@ -29,7 +32,8 @@ jobs:
     needs: [typecheck-lint]
     if: needs.typecheck-lint.outputs.run_rest_jobs == 'true'
     runs-on: ${{ matrix.os }}
-
+    permissions:
+      contents: write
     strategy:
       matrix:
         os: [windows-latest]
@@ -50,7 +54,7 @@ jobs:
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.github_token }}
-
+          args: --publish=always
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
-          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
+          release: true
