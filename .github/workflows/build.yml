@@ -7,7 +7,8 @@ on:
 jobs:
   typecheck-lint:
     runs-on: ubuntu-latest
-
+    outputs:
+      run_rest_jobs: ${{ startsWith(github.ref, 'refs/tags/v') }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -27,9 +28,9 @@ jobs:
         run: npm run lint
 
   release:
+    needs: [typecheck-lint]
+    if: needs.typecheck-lint.outputs.run_rest_jobs == 'true'
     runs-on: ${{ matrix.os }}
-    outputs:
-      run_rest_jobs: ${{ startsWith(github.ref, 'refs/tags/v') }}
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
