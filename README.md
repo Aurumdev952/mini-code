@@ -25,7 +25,6 @@ this is a simple implementation of VsCode code editor
 
 ## Project Setup
 
-
 ### Install
 
 ```bash
