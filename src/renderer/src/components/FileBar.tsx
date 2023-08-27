@@ -1,5 +1,4 @@
 import useStore from '@renderer/utils/store'
-import classNames from 'classnames'
 import React from 'react'
 
 const FileBar: React.FC = () => {

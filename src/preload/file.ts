@@ -1,4 +1,4 @@
-import { mkdir, readdir, readFile } from 'fs/promises'
+import { readdir } from 'fs/promises'
 import { readFileSync } from 'fs'
 import crypto from 'crypto'
 import path from 'path'
@@ -57,6 +57,8 @@ export const fileSys = {
           path: path.join(parentPath, file.name),
           language: getLang(file.name)
         }
+      } else {
+        return undefined
       }
     })
     return c.filter((t) => typeof t !== undefined) as unknown as {

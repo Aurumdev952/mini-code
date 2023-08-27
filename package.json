@@ -28,6 +28,7 @@
     "classnames": "^2.3.2",
     "electron-router-dom": "^1.0.5",
     "electron-updater": "^5.3.0",
+    "emmet-monaco-es": "^5.3.0",
     "lucide": "^0.216.0",
     "monaco-editor": "^0.38.0",
     "react-grid-resizable": "^1.0.0",

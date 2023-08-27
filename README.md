@@ -13,9 +13,11 @@ this is a simple implementation of VsCode code editor
 - [ ] add tab selection and drag n' drop
 - [ ] add more language options
 - [ ] add color scheme
-- [ ] add emmet support
+- [x] add emmet support
+- [ ] add syntax checking and tokens
 - [ ] add stuff to the infobar
 - [ ] release first build
+- [ ] do major code refactoring
 
 ## Recommended IDE Setup
 
