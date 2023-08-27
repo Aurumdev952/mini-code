@@ -3,6 +3,8 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
+let splash
+
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -17,8 +19,18 @@ function createWindow(): void {
       webSecurity: false
     }
   })
+  splash = new BrowserWindow({
+    width: 900,
+    height: 670,
+    transparent: true,
+    frame: false,
+    alwaysOnTop: true,
+    show: true
+  })
+  splash.loadFile(join(__dirname, '../../resources/splash.html'))
 
   mainWindow.on('ready-to-show', () => {
+    splash.destroy()
     mainWindow.show()
   })
 

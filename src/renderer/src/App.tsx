@@ -5,34 +5,29 @@ import FileBar from './components/FileBar'
 import InfoBar from './components/InfoBar'
 import { ColsWrapper, Col } from 'react-grid-resizable'
 import { useEffect } from 'react'
+import { appConfig } from './config/app'
+import useStore from './utils/store'
 function App(): JSX.Element {
+  const { setFiles, setSelection } = useStore()
+  const test = async () => {
+    try {
+      const fs = window.api.fs
+      const data = await fs.getDir(appConfig.defaultDir)
+      console.log(data)
+      setFiles(data)
+      setSelection(data[0].id)
+    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      console.log(error.message)
+    }
+  }
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    window.api
-      .fs()
-      // eslint-disable-next-line prettier/prettier, no-useless-escape
-      .getDir('D:/aurum/deprecated')
-      .then((data) => {
-        console.log(data)
-      })
+    test()
   }, [])
   return (
     <main>
       <div className="container">
-        {/* <div className="main">
-          <div className="sidebar">
-            <Sidebar />
-          </div>
-          <div className="editor">
-            <div className="editormain">
-              <Editor />
-            </div>
-            <div className="filebar">
-              <FileBar />
-            </div>
-          </div>
-        </div> */}
         <ColsWrapper
           separatorProps={{
             style: {

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useMemo, useEffect, useState } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 import * as monaco from 'monaco-editor'
 import { loader } from '@monaco-editor/react'
@@ -8,7 +8,7 @@ import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
-import { store } from '@renderer/utils/store'
+import { useGetFile } from '@renderer/utils/func'
 
 self.MonacoEnvironment = {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -41,7 +41,8 @@ loader.config({
 loader.init().then((monaco) => console.log('here is the monaco instance:', monaco))
 
 const Editor: React.FC = () => {
-  const { files, currentfile } = store()
+  const file = useGetFile()
+  const [cvalue, setCValue] = useState('')
   const editorref = useRef<null | typeof monaco>(null)
   return (
     <MonacoEditor
@@ -51,9 +52,9 @@ const Editor: React.FC = () => {
         }
         editorref.current = editor
       }}
-      path={files[currentfile].name}
-      language={files[currentfile].language}
-      defaultValue={files[currentfile].value}
+      path={file?.name}
+      language={file?.language}
+      defaultValue={file?.value}
       theme="vs-dark"
       loading={'happy Loading...'}
     />

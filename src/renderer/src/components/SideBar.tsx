@@ -1,8 +1,8 @@
-import { store } from '@renderer/utils/store'
+import useStore from '@renderer/utils/store'
 import React from 'react'
 import { VscNewFile, VscNewFolder, VscCollapseAll } from 'react-icons/vsc'
 const Sidebar: React.FC = () => {
-  const { files, setCurrentFile, currentfile } = store()
+  const { files, setSelection, selection } = useStore()
   return (
     <div className="sidebardiv">
       <div className="toolbar">
@@ -20,11 +20,11 @@ const Sidebar: React.FC = () => {
         <div
           className="filename"
           style={{
-            backgroundColor: currentfile === i ? '#86a5b122' : '',
-            outline: currentfile === i ? '.0001rem solid #86a5b140' : ''
+            backgroundColor: selection === file.id ? '#86a5b122' : '',
+            outline: selection === file.id ? '.0001rem solid #86a5b140' : ''
           }}
           key={i}
-          onClick={() => void setCurrentFile(i)}
+          onClick={() => void setSelection(file.id)}
         >
           {file.name}
         </div>

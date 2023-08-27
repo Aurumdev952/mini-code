@@ -1,7 +1,7 @@
 import { contextBridge } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 import path from 'path'
-import { FileSys } from './file'
+import { fileSys } from './file'
 function ensureFirstBackSlash(str: string): string {
   return str.length > 0 && str.charAt(0) !== '/' ? '/' + str : str
 }
@@ -16,10 +16,10 @@ const api = {
   pathUrl: () => {
     return uriFromPath(path.join(__dirname, '../../node_modules/monaco-editor/min/vs'))
   },
-  fs: () => {
-    return new FileSys()
-  }
+  fs: fileSys
 }
+
+export type APiType = typeof api
 // eslint-disable-next-line no-useless-escape, prettier/prettier
 
 // Use `contextBridge` APIs to expose Electron APIs to

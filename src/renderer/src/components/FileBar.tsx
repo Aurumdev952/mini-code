@@ -1,21 +1,21 @@
-import { store } from '@renderer/utils/store'
+import useStore from '@renderer/utils/store'
 import classNames from 'classnames'
 import React from 'react'
 
 const FileBar: React.FC = () => {
-  const { files, setCurrentFile, currentfile } = store()
+  const { files, setSelection, selection } = useStore()
   return (
     <div className="topbardiv">
       {files.map((file, i) => (
         <div
-          className={currentfile === i ? 'down' : ' '}
+          className={selection === file.id ? 'down' : ' '}
           style={{
-            backgroundColor: currentfile === i ? '#86a5b122' : ''
+            backgroundColor: selection === file.id ? '#86a5b122' : ''
           }}
           key={i}
-          onClick={() => void setCurrentFile(i)}
+          onClick={() => void setSelection(file.id)}
         >
-          {file.name}
+          <p>{file.name}</p>
         </div>
       ))}
     </div>
