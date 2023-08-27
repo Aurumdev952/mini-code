@@ -27,7 +27,7 @@ jobs:
       - name: Lint
         run: npm run lint
       - name: test
-        run: echo ${{ startsWith(github.ref, 'refs/tags/v') }}
+        run: echo ${{ startsWith(github.ref, 'refs/tags/v') }} ${{ github.ref }}
 
   release:
     needs: [typecheck-lint]
