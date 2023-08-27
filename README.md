@@ -1,12 +1,28 @@
-# electronote
+# electronote | mini-code
 
-An Electron application with React and TypeScript
+this is a simple implementation of VsCode code editor
+
+## TODO:
+
+- [ ] add filesystem navigation for sidebar
+- [ ] add saving
+- [ ] optimise if possible
+- [ ] add file create, delete and rename
+- [ ] add file icons
+- [ ] add menu system (more info later)
+- [ ] add tab selection and drag n' drop
+- [ ] add more language options
+- [ ] add color scheme
+- [ ] add emmet support
+- [ ] add stuff to the infobar
+- [ ] release first build
 
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 ## Project Setup
+
 
 ### Install
 
